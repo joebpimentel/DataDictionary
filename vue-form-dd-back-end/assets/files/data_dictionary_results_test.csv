@@ -1,0 +1,5 @@
+"table_name","table_comment","column_name","data_type","character_maximum_length","is_nullable","column_default","user_defined_type","column_comment","primary_key_constraint","primary_key_name","check_constraint","check_name","check_clause","index_name","index_definition"
+"products","Tabela de Produtos","id","integer",NULL,"NO",NULL,"int4",NULL,"PRIMARY KEY","products_pkey",NULL,NULL,NULL,"products_pkey","CREATE UNIQUE INDEX products_pkey ON public.products USING btree (id)"
+"products","Tabela de Produtos","name","character varying",50,"NO",NULL,"varchar",NULL,NULL,NULL,NULL,NULL,NULL,"products_pkey","CREATE UNIQUE INDEX products_pkey ON public.products USING btree (id)"
+"products","Tabela de Produtos","price","numeric",NULL,"NO",NULL,"numeric","Preço do Produto",NULL,NULL,"CHECK","price_limits","((price > 0.0) AND (price < (10000)::numeric))","products_pkey","CREATE UNIQUE INDEX products_pkey ON public.products USING btree (id)"
+"products","Tabela de Produtos","imageurl","text",NULL,"YES",NULL,"text",NULL,NULL,NULL,NULL,NULL,NULL,"products_pkey","CREATE UNIQUE INDEX products_pkey ON public.products USING btree (id)"
