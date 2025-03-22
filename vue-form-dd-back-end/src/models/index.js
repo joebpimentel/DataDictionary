@@ -1,6 +1,7 @@
 const dbConfig = require("../config/db_config.js");
 
 const Sequelize = require("sequelize");
+const { QueryTypes } = require('sequelize');
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
@@ -23,6 +24,7 @@ const db = {};
 
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
+db.QueryTypes = QueryTypes;
 
 db.products = require("./products.js")(sequelize, Sequelize);
 db.users = require("./users.js")(sequelize, Sequelize);
