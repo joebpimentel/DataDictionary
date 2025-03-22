@@ -1,6 +1,6 @@
 <template>
-  <h1>Products</h1>
-  <ProductsList :products="products"/>
+  <h1>Tabelas de attributos</h1>
+  <ProductsList :tab="products"/>
 </template>
 
 <script>

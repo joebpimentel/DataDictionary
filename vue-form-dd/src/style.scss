@@ -1,4 +1,4 @@
-@import '@vueform/vueform/themes/vueform/scss/index.scss';
+// @import '@vueform/vueform/themes/vueform/scss/index.scss';
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -6,6 +6,6 @@
   }
   
   :root, :before, :after, * {
-    @include vf-dark-vars;
+    // @include vf-dark-vars;
   }
 }

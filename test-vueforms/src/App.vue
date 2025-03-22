@@ -7,20 +7,18 @@
 </template> -->
 
 <template>
-  <div>
-    <LandingPage/>
-    <router-view></router-view>
+  <div id="app">
+    <TablesPage />
   </div>
 </template>
 
 <script>
-import LandingPage from './pages/LandingPage.vue';
+// import MyForm from './components/MyForm.vue';
+import TablesPage from './pages/TablesPage.vue';
 
 export default {
-  name: "App",
   components: {
-    LandingPage,
-  },
-}
-
+    TablesPage
+  }
+};
 </script>
