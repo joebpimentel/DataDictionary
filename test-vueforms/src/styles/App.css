@@ -1,0 +1,36 @@
+.app  {
+    width: 100vw;
+    background-color: darkslategray;
+}
+
+.header {
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    grid-template-rows: auto 1fr auto;
+}
+
+.content  {
+    display: grid;
+    grid-template-columns: 15% auto auto;
+    grid-template-rows: 80vh;
+}
+
+.content > * {
+    margin: 0.5rem;
+    border: 0.5rem black solid;
+    border-radius: 25px;
+}
+
+.left_sidebar {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(43, 59, 59);
+}
+
+.main {
+    background-color: rgb(58, 33, 2);
+}
+
+.right_sidebar {
+    background-color: rgb(5, 32, 54);
+}

@@ -1,0 +1,32 @@
+{
+  "name": "test-vueforms",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.27.6",
+    "axios": "1.9.0",
+    "pinia": "3.0.3",
+    "vue": "3.5.16",
+    "vue-router": "4.5.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.27.2",
+    "@babel/core": "^7.27.4",
+    "@babel/node": "7.27.1",
+    "@babel/plugin-transform-runtime": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
+    "@types/node": "22.15.30",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "@vue/tsconfig": "0.7.0",
+    "@vueform/vueform": "^1.12.8",
+    "typescript": "5.8.3",
+    "vite": "^6.3.5",
+    "vue-tsc": "2.2.10"
+  }
+}

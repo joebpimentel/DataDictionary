@@ -1,0 +1,8 @@
+Data element name: This is the name given to the data element, which can be a table, column, or any other data structure.
+Description: A brief description of the data element.
+Data type: The type of data stored in the data element, such as text, numeric, date, or Boolean.
+Length: The length of the data element, such as the maximum number of characters in a text field.
+Allowable values: The range of allowable values for the data element, such as a list of values for a drop-down menu.
+Validation rules: Any rules or conditions that must be met for the data element to be considered valid.
+Source: The source of the data element, such as the system or application which the data is entered or imported from.
+Relationships: The relationships between data elements, such as primary keys, foreign keys, and other relationships.
