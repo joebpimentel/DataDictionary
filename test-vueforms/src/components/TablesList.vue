@@ -20,9 +20,9 @@
                         <th>Descrição</th>
                     </tr>
                 </thead>
-                    <tr @mouseover="selectedBg" @mouseout="nonSelectedBg" v-for="(option, index) in tableList" :key="index">
+                <tr @mouseover="selectedBg" @mouseout="nonSelectedBg" v-for="(option, index) in tableList" :key="index">
                     <td class="td">
-                        <input  
+                        <input
                             class="radio_buttons" 
                             :id="'chk_name_' + index" 
                             type="radio" 
@@ -44,6 +44,27 @@
         <div class="actions">
             <button @click="moveToRight" :disabled="selectedLeft.length === 0">➡️</button>
             <button @click="moveToLeft" :disabled="selectedRight.length === 0">⬅️</button>
+        </div>
+        
+        <div v-if="selectedLeft.length !== 0" class="list">
+            <label class="form_label">Table info for table {{ this.selectedLeft }}</label>
+            <div>
+                <label>Comment: {{ this.selectedTable.table_metadata.table_comment }}</label>
+                <table class="styled-table">
+                    <thead>
+                        <tr >
+                            <th v-for="(key, index) in Object.keys(this.selectedTable.table_metadata.columns[0])" :key="index">
+                                {{  key  }}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tr @mouseover="selectedBg" @mouseout="nonSelectedBg" v-for="(column, index) in this.selectedTable.table_metadata.columns" :key="index">
+                        <td class="td" v-for="(value, index) in Object.values(column)"  :key="index">
+                            {{ value }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
 
     </div>
@@ -167,14 +188,21 @@ export default {
 
                 this.tableList = this.tables.sort((a, b) => a.table_metadata.table_comment?.localeCompare(b.table_metadata.table_comment));
             }
-        }
+        },
+        arrayToText(array) {
+    return array.map(obj => {
+      const chave = Object.keys(obj)[0];
+      return `${chave}: ${obj[chave]}`;
+    }).join('\n'); // ou ', ' para separar com vírgulas
+  }
+
     },
     watch: {
         async selectedLeft(newValue) {
-            console.log("Opção selecionada: ", this.selectedLeft)
-            let selected_table = this.tableList.find((x) => x.table_metadata.table_name == this.selectedLeft);
-            if (selected_table) {
-                console.log("Tabela selecionada: ", selected_table);
+            console.log("Opção selecionada: ", this.selectedLeft[0])
+            this.selectedTable = this.tableList.find((x) => x.table_metadata.table_name == this.selectedLeft);
+            if (this.selectedTable) {
+                console.log("Tabela selecionada: ", this.selectedTable.table_metadata.table_comment);
                 let response = [];
                 await axios.get(`http://localhost:8081/api/get_dd_table/${this.selectedSchema}/${newValue}`)
                     .then(res => {
