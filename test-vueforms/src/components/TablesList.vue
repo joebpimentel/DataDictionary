@@ -20,13 +20,13 @@
                         <th>Descrição</th>
                     </tr>
                 </thead>
-                <tr @mouseover="selectedBg" @mouseout="nonSelectedBg" v-for="(option, index) in tableList" :key="index">
+                <tr @mouseover="selectedBg" @mouseout="nonSelectedBg" v-for="(option, index) in tableList" :key="option.table_metadata.table_name">
                     <td class="td">
                         <input
                             class="radio_buttons" 
                             :id="'chk_name_' + index" 
                             type="radio" 
-                            v-model="selectedLeft" 
+                            v-model="selectedItem" 
                             :value="option.table_metadata.table_name"/>
                         <label :for="'chk_name_' + index">
                             {{ option.table_metadata.table_name }} 
@@ -42,7 +42,8 @@
 
         <!-- Botões de Ação -->
         <div class="actions">
-            <button @click="moveToRight" :disabled="selectedLeft.length === 0">➡️</button>
+            <!-- <button @click="moveToRight" :disabled="selectedLeft.length === 0">➡️</button> -->
+            <button @click="moveToRight" :disabled="this.selectedItem === null">➡️</button>
             <button @click="moveToLeft" :disabled="selectedRight.length === 0">⬅️</button>
         </div>
         
@@ -50,7 +51,7 @@
             <label class="form_label">Table info for table {{ this.selectedLeft }}</label>
             <div>
                 <label>Comment: {{ this.selectedTable.table_metadata.table_comment }}</label>
-                <table class="styled-table">
+                <table :class="$styled['styled-table']">
                     <thead>
                         <tr >
                             <th v-for="(key, index) in Object.keys(this.selectedTable.table_metadata.columns[0])" :key="index">
@@ -85,7 +86,8 @@ export default {
             // Lista inicial de itens disponíveis
             tableList: [],
             // Itens selecionados na lista de tabelas
-            selectedLeft: [],
+            selectedLeft: "",
+            selectedItem: null,
             selectedRight: [],
             selectedSchema: null,
             selectedTable: null,
@@ -182,21 +184,22 @@ export default {
                     });
 
                 const tables_definitions = response.data;
-                tables_definitions.forEach(element => {
-                    this.tables.push(element);
+                tables_definitions.forEach((element, index) => {
+                    this.tables.push({ ...element, id: index } );
                 });
-
+                
                 this.tableList = this.tables.sort((a, b) => a.table_metadata.table_comment?.localeCompare(b.table_metadata.table_comment));
             }
-        },
+        },  
         arrayToText(array) {
-    return array.map(obj => {
-      const chave = Object.keys(obj)[0];
-      return `${chave}: ${obj[chave]}`;
-    }).join('\n'); // ou ', ' para separar com vírgulas
-  }
+            return array.map(obj => {
+                const chave = Object.keys(obj)[0];
+                return `${chave}: ${obj[chave]}`;
+            }).join('\n'); // ou ', ' para separar com vírgulas
+        }
 
     },
+
     watch: {
         async selectedLeft(newValue) {
             console.log("Opção selecionada: ", this.selectedLeft[0])

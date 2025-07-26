@@ -1,9 +1,12 @@
+import cors from 'cors';
+import express from 'express';
+import db from './models'
 import { query_database_schemas, query_table_json_schema } from "./tools/db_queries.js";
 
 async function start() {
 
-  const cors = require('cors');
-  const express = require('express');
+  // const cors = require('cors');
+  // const express = require('express');
   const app = express();
 
   app.use(cors({
@@ -22,7 +25,7 @@ async function start() {
   //   { maxAge: '1y', etag: false},
   // ))
 
-  const db = require("./models");
+  // const db = require("./models");
   db.sequelize.sync();
 
   const Product = db.products;

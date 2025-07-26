@@ -67,7 +67,7 @@ async function start() {
           err.message || "Some error occurred while retrieving table definitions."
       });
     });
-  });
+  }); 
 
   app.get('/api/get_dd_tables', async (req,res) => {
     let dd_tables_x;

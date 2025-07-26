@@ -98,6 +98,7 @@
     font-size: 1.1em;
     font-family: sans-serif;
     min-width: 200px;
+    max-height: 20%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
