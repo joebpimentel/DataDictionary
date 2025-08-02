@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        /* Nível de ECMAScript */
+        "target": "ES2020", // ou "ESNext" para versão mais recente
+        /* Sistema de módulos */
+        "module": "nodenext", // ou "CommonJS" se for Node.js tradicional
+        /* Estratégia de resolução de módulos */
+        "moduleResolution": "nodenext", // Melhor para projetos modernos
+        /* Diretórios */
+        "outDir": "./dist", // Pasta de saída dos arquivos JS
+        "rootDir": "./src", // Pasta de origem dos arquivos TS
+        /* Configurações de tipagem */
+        "strict": true, // Ativa todas as verificações rigorosas
+        "noImplicitAny": true, // Não permite 'any' implícito
+        "strictNullChecks": true, // Checagem rigorosa de null/undefined
+        /* Features modernas */
+        "esModuleInterop": true, // Melhor interoperabilidade com CommonJS
+        "skipLibCheck": true, // Otimização: ignora checagem de libs
+        /* Mapeamento para debug */
+        "sourceMap": true // Gera source maps para debug
+    },
+    /* Incluir apenas a pasta src (evita compilar node_modules, etc.) */
+    "include": [
+        "src/**/*"
+    ],
+    /* Excluir pastas desnecessárias */
+    "exclude": [
+        "node_modules",
+        "dist",
+        "**/*.spec.ts"
+    ]
+}

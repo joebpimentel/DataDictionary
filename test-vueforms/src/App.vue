@@ -25,11 +25,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import PageHeader from './pages/PageHeader.vue';
 import NavBar from './pages/NavBar.vue'; 
-import TablesListPage from './pages/TablesListPage.vue'; 
-import { useStateStore } from './stores/stateStore.js'
+import TablesListPage from './pages/TablesListPage.vue';
+import { useStateStore } from './stores/stateStore'
 
 let stateStore = null;
 

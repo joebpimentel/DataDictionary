@@ -6,7 +6,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import axios from 'axios';
 import TablesList from '../components/TablesList.vue';
 

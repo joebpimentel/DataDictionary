@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "hsc -b",
-    "dev": "npx nodemon --exec npx babel-node src/back_end_server.js"
+    "build": "tsc",
+    "dev": "npx nodemon --exec \"npx babel-node --extensions '.ts,.js' src/back_end_server.ts\""
   },
   "keywords": [],
   "author": "",
@@ -23,9 +23,12 @@
     "@babel/cli": "^7.27.2",
     "@babel/core": "^7.27.4",
     "@babel/node": "7.27.1",
-    "@babel/plugin-transform-runtime": "7.27.4",
-    "@babel/preset-env": "^7.27.2",
+    "@babel/plugin-transform-runtime": "^7.27.4",
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-typescript": "^7.27.1",
     "@types/cors": "^2.8.18",
-    "@types/express": "^5.0.2"
+    "@types/express": "^5.0.2",
+    "babel-node": "^0.0.1-security",
+    "nodemon": "^3.1.10"
   }
 }

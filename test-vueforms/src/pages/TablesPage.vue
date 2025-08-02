@@ -9,9 +9,9 @@
     </div>
 </template>
   
-<script>
+<script lang="ts">
+import { tables } from '../assets/mock/test_data';
 import TransferList from '../components/TransferList.vue';
-import { tables } from '../assets/mock/test_data.js';
 
   export default {
     name: "TablePage",

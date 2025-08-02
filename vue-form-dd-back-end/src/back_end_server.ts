@@ -1,7 +1,9 @@
 import cors from 'cors';
 import express from 'express';
-import db from './models'
-import { query_database_schemas, query_table_json_schema } from "./tools/db_queries.js";
+
+import { db } from './models'
+import { query_database_schemas, query_table_json_schema } from "./tools/db_queries";
+import { QueryTypes } from 'sequelize';
 
 async function start() {
 
@@ -38,7 +40,7 @@ async function start() {
     let schema_x;
     const db_schemas_query = query_database_schemas();
     await db.sequelize.query(db_schemas_query, {
-      type: db.QueryTypes.SELECT,
+      type: QueryTypes.SELECT,
     })
       .then(data => {
         schema_x = data;
@@ -56,7 +58,7 @@ async function start() {
     const schema = req.params.schema;
     const complex_query = query_table_json_schema(schema);
     await db.sequelize.query(complex_query, {
-      type: db.QueryTypes.SELECT,
+      type: QueryTypes.SELECT,
     })
     .then (data => {
       let complex_query_response = data;

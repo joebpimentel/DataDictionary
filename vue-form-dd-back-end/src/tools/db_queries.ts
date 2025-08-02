@@ -1,4 +1,4 @@
-import db from '../models';
+import { db } from '../models';
 
 export function assembly_complex_query() {
     const complex_query = `
@@ -79,7 +79,7 @@ export function assembly_complex_query() {
   }
   
 
-  export function query_table_json_schema(schema) {
+  export function query_table_json_schema(schema: string) {
     const complex_query = `
     SELECT
         json_build_object(
