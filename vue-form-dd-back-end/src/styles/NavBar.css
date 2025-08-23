@@ -1,0 +1,31 @@
+.navbar {
+    display: flex;
+    flex-direction: column;
+}
+
+.navigation ul {
+    display: flex;
+    flex-direction: column;
+}
+.navbar nav ul {
+    counter-reset: navbar-item-count;
+    gap: 1rem;
+    list-style: none;
+}
+
+.navbar li {
+    counter-increment: navbar-item-count;
+    /* background-color: #5f5f5f; */
+    padding: 5px;
+}
+
+
+.navbar a {
+    display: flex;
+    color: white;
+}
+
+.navbar ul :hover {
+    color: cyan;
+    background-color: rgb(43, 59, 59);
+}

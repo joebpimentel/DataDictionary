@@ -2,20 +2,10 @@
     <div class="table_description_list">
         <!-- Tables List -->
         <div class="list">
-            <h3 class="h3_table_header">Disponíveis</h3>
+            <h3 class="h3_table_header">Database Schema and Object</h3>
             <label class="form_label">Selecione o esquema</label>
-            <select 
-                :class="$style.form_select" 
-                id="schema_list"  
-                @change="handleSchemaSection">
-                <option 
-                    v-for="schema in schemaList" 
-                    :key="schema.schema_metadata.schema_name" 
-                    :value="schema.schema_metadata.schema_name"
-                >
-                    {{ schema.schema_metadata.schema_name }}
-                </option>
-            </select>
+            <TreeViewComponent>
+            </TreeViewComponent>
             <table class="styled-table">
                 <thead>
                     <tr>
@@ -23,22 +13,19 @@
                         <th>Descrição</th>
                     </tr>
                 </thead>
-                <tr @mouseover="selectedBg" @mouseout="nonSelectedBg" v-for="(option, index) in tableList" :key="option.table_metadata.table_name">
+                <tr @mouseover="selectedBg" @mouseout="nonSelectedBg" v-for="(option, index) in tableList"
+                    :key="option.table_metadata.table_name">
                     <td class="td">
-                        <input
-                            class="radio_buttons" 
-                            :id="'chk_name_' + index" 
-                            type="radio" 
-                            v-model="selectedItem" 
-                            :value="option.table_metadata.table_name"/>
+                        <input class="radio_buttons" :id="'chk_name_' + index" type="radio" v-model="selectedItem"
+                            :value="option.table_metadata.table_name" />
                         <label :for="'chk_name_' + index">
-                            {{ option.table_metadata.table_name }} 
-                        </label> 
+                            {{ option.table_metadata.table_name }}
+                        </label>
                     </td>
                     <td class="td">
                         {{ option.table_metadata.table_comment }}
                     </td>
-                <!-- </label> -->
+                    <!-- </label> -->
                 </tr>
             </table>
         </div>
@@ -49,21 +36,24 @@
             <button @click="moveToRight" :disabled="selectedLeft === null">➡️</button>
             <button @click="moveToLeft" :disabled="selectedRight.length === 0">⬅️</button>
         </div>
-        
+
         <div v-if="selectedLeft?.length !== 0" class="list">
             <label class="form_label">Table info for table {{ selectedLeft }}</label>
             <div>
                 <label>Comment: {{ selectedTable?.table_metadata.table_comment ?? 'None' }}</label>
                 <table :class="$style['styled-table']">
                     <thead>
-                        <tr >
-                            <th v-if="selectedTable" v-for="(key, index) in Object.keys(selectedTable.table_metadata.columns[0])" :key="index">
-                                {{  key  }}
+                        <tr>
+                            <th v-if="selectedTable"
+                                v-for="(key, index) in Object.keys(selectedTable.table_metadata.columns[0])"
+                                :key="index">
+                                {{ key }}
                             </th>
                         </tr>
                     </thead>
-                    <tr @mouseover="selectedBg" @mouseout="nonSelectedBg" v-for="(column, index) in selectedTable?.table_metadata.columns" :key="index">
-                        <td class="td" v-for="(value, index) in Object.values(column)"  :key="index">
+                    <tr @mouseover="selectedBg" @mouseout="nonSelectedBg"
+                        v-for="(column, index) in selectedTable?.table_metadata.columns" :key="index">
+                        <td class="td" v-for="(value, index) in Object.values(column)" :key="index">
                             {{ value }}
                         </td>
                     </tr>
@@ -76,25 +66,19 @@
 
 <script lang="ts">
 import axios from "axios";  
-import { SchemaResponseType, TableResponseType } from "../types/DBTypes";
-import { defineComponent, PropType } from "vue";
+import { TableResponseType } from "../types/DBTypes";
+import { defineComponent, PropType } from "vue"
+import TreeViewComponent from "./tree_view/TreeViewComponent.vue";
 
 interface ITable extends TableResponseType {
     id: number
 }
 
 export default defineComponent({
-    name: "TablesList",
-    props: {
-        schemas: {
-            type: Object as PropType<Array<SchemaResponseType>>,
-            required: true,
-        }
-    },
+    name: "DBEntitiesTreeView",
     data() {
         return {
             tables: new Array<ITable>(),
-            schemaList: this.schemas.sort((a, b) => a.schema_metadata.schema_name.localeCompare(b.schema_metadata.schema_name)),
             // Lista inicial de itens disponíveis
             tableList: new Array<ITable>(),
             // Itens selecionados na lista de tabelas

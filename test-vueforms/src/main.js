@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import './style.css'
+// import './style.css'
 import App from './App.vue'
 import * as VueRouter from 'vue-router'
 import Vueform from '@vueform/vueform'

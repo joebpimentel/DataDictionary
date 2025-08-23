@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export const useStateStore = defineStore('sessionState', {
   // Estado (dados reativos)
   state: () => ({
-    selectedFunction: "",
+    selectedFunction: "" as string,
   }),
   
   // Getters (computados)
@@ -13,8 +13,10 @@ export const useStateStore = defineStore('sessionState', {
   
   // Actions (métodos)
   actions: {
-    setFunction(value) {
+    setFunction(value: string) {
       this.selectedFunction = value
     },
   }
 })
+
+export type SessionStateStoreType = typeof useStateStore;

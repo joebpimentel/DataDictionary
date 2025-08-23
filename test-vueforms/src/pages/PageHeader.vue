@@ -1,10 +1,10 @@
 <template>
-    <header class="inner_header">
+    <div class="header">
       <h1>
         Header<p/>
         Dictionary Builder
       </h1>
-    </header>
+    </div>
 </template>
 
 <script lang="ts">
@@ -19,10 +19,3 @@
   }
 </script>
 
-<style>
-.inner_header {
-  background-color: rgb(3, 71, 34);
-  border: 0.5rem black solid;
-  border-radius: 25px;
-}
-</style>

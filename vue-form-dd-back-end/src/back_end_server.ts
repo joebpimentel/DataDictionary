@@ -4,6 +4,7 @@ import express from 'express';
 import { db } from './models'
 import { query_database_schemas, query_table_json_schema } from "./tools/db_queries";
 import { QueryTypes } from 'sequelize';
+import { dbConfig } from './config/db_config';
 
 async function start() {
 
@@ -35,6 +36,12 @@ async function start() {
   const DDTables = db.dd_tables;
   const DDTableColumns = db.dd_table_columns;
 
+
+  app.get('/api/get_db_name', async (req, res) => {
+    const data = { db_name: dbConfig.DB };
+    res.send(data);
+  });
+  
 
   app.get('/api/get_db_schemas', async (req, res) => {
     let schema_x;

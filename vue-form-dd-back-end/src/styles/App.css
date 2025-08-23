@@ -1,39 +1,30 @@
 .app  {
-    width: 95vw;
-    height: 95vh;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 100vw;
+    background-color: darkslategray;
 }
-
 
 .header {
-    display: grid;
     text-align: center;
-    color: #000000a0;
-    background-color: #008b8b50;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     grid-template-rows: auto 1fr auto;
-    margin: 0.5rem;
-    border: 0.2rem black solid;
-    border-radius: 25px;
 }
-
 
 .content  {
     display: grid;
-    color: lightgreen;
     grid-template-columns: 15% auto auto;
     grid-template-rows: 80vh;
 }
 
 .content > * {
     margin: 0.5rem;
-    border: 0.2rem black solid;
+    border: 0.5rem black solid;
     border-radius: 25px;
 }
 
 .left_sidebar {
     display: flex;
     flex-direction: column;
-    background-color: #2b3b3ba0;
+    background-color: rgb(43, 59, 59);
 }
 
 .main {

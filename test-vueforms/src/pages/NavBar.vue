@@ -9,14 +9,6 @@
       </ul>
     </nav>
   </aside>
-  <!-- 
-<button
-@click="addToCart"
-class="add-to-cart"
-v-if="user && !itemIsInCart"
->
--->
-
 </template>
 
 <script lang="ts">
@@ -39,7 +31,7 @@ export default {
       async goDataDictionary() {
         const stateStore = useStateStore();
         stateStore.setFunction("DataDictionary");
-        const currentFunction =stateStore.getFunction;
+        const currentFunction = stateStore.getFunction;
         const message = 'Go ' + currentFunction + '!';
         console.log(message);
       },
@@ -54,4 +46,6 @@ export default {
 }
 </script>
 
-<style src="../styles/NavBar.css" scoped></style>
+<style scoped>
+@import url('../styles/NavBar.css');
+</style>
